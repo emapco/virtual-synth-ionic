@@ -12,7 +12,7 @@ export class Oscillator {
 
   constructor(id: number) {
     this.id = id;
-    this.on = (this.id === 1);
+    this.on = true;
     this.wave = 'sine';
     this.gain = 50;
     this.octave = 0;

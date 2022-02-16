@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { FilterPage } from './filter-page.component';
+import { EffectsPage } from './effects-page.component';
 
 describe('Tab3Page', () => {
-  let component: FilterPage;
-  let fixture: ComponentFixture<FilterPage>;
+  let component: EffectsPage;
+  let fixture: ComponentFixture<EffectsPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [FilterPage],
+      declarations: [EffectsPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FilterPage);
+    fixture = TestBed.createComponent(EffectsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

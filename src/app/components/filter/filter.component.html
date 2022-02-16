@@ -1,64 +1,63 @@
 <!-- Filter component header div -->
-<div class="center-container-header input-container">
+<section class="center-container-header input-container">
   <p>Filter</p>
-  <div class="test">
+  <div class="osc-button-row">
     <button *ngFor="let osc of oscService.oscillators" (click)="changeFilter(osc)">
       Osc {{osc.id}}
     </button>
   </div>
-</div>
-<div class="center-container input-container">
-  <div class="filter-component">
-    <!-- enable filter -->
+</section>
+<section class="center-container input-container">
+  <!-- enable filter -->
+  <div class="input-container-horizontal">
     <label class="unselectable">
-    <input type="checkbox" [(ngModel)]="filter.enabled">
-      Enable</label>
-    <br>
-    <!-- select filter type -->
-    <label>Type</label>
-    <select [ngModel]="filter.type" (ngModelChange)="filter.type=$event.toLowerCase()">
-      <option *ngFor="let filter of filterTypes" [value]="filter">
+      <input type="checkbox" [(ngModel)]="filter.enabled">
+      Enable
+    </label>
+  </div>
+  <!-- select filter type -->
+  <div>
+    <ion-label>Type</ion-label>
+    <ion-select [ngModel]="filter.type" (ngModelChange)="filter.type=$event.toLowerCase()">
+      <ion-select-option *ngFor="let filter of filterTypes" [value]="filter">
         {{ filter | titlecase }}
-      </option>
-    </select>
+      </ion-select-option>
+    </ion-select>
   </div>
   <!-- change filter gain -->
-  <div class="filter-component center">
+  <div class="">
     <label>Gain</label>
-    <mat-slider
+    <ion-range
       [(ngModel)]="filter.gain"
-      thumbLabel
-      tickInterval="1"
+      step="1"
       min="-40"
-      [vertical]="true"
       max="40">
-    </mat-slider>
+      <ion-label slot="start">-40</ion-label>
+      <ion-label slot="end">40</ion-label>
+    </ion-range>
   </div>
   <!-- change cutoff frequency -->
-  <div class="filter-component center">
+  <div class="">
     <label>Frequency</label>
-    <mat-slider
-      [displayWith]="formatFrequency"
+    <ion-range
       [ngModel]="displaySliderFreq"
       (ngModelChange)="filter.frequency=updateFrequency($event)"
-      thumbLabel
       step=".05"
-      tickInterval="1"
       min="1"
-      [vertical]="true"
       max="100">
-    </mat-slider>
+      <ion-label slot="start">10</ion-label>
+      <ion-label slot="end">20,000</ion-label>
+    </ion-range>
   </div>
   <!-- change q factor -->
-  <div class="filter-component center">
+  <div class="">
     <label class="form-label">Q</label>
-    <mat-slider
+    <ion-range
       [(ngModel)]="filter.qFactor"
-      thumbLabel
-      tickInterval="1"
       min="0"
-      [vertical]="true"
       max="1000">
-    </mat-slider>
+      <ion-label slot="start">0</ion-label>
+      <ion-label slot="end">1000</ion-label>
+    </ion-range>
   </div>
-</div>
+</section>

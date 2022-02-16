@@ -10,8 +10,7 @@ import {NoteFrequencies} from '../../enums/note-frequencies';
 })
 export class KeyboardComponent {
 
-  constructor(private playNoteSer: PlayNoteService) {
-  }
+  constructor(private playNoteSer: PlayNoteService) {}
 
   @HostListener('document:keydown', ['$event'])  // listener must be in a component
   handleKeyboardEvent(event: KeyboardEvent) {
@@ -23,9 +22,10 @@ export class KeyboardComponent {
   }
 
   @HostListener('touchstart', ['$event'])
-  handleClickTouchEvent(event: TouchEvent) {
+  handleTouchEvent(event: TouchEvent) {
     const element = event.target as HTMLElement;
     if (element.tagName === 'KBD') {
+      console.log(element.innerText);
       this.playNoteSer.playNotes(element.innerText);
       this.animateKeyPress(element.innerText);
     }
@@ -33,7 +33,7 @@ export class KeyboardComponent {
 
   @HostListener('document:keyup', ['$event'])
   @HostListener('touchend', ['$event'])
-  handleKeyClickTouchRelease(event: TouchEvent | KeyboardEvent) {
+  handleKeyTouchRelease(event: TouchEvent | KeyboardEvent) {
     if ('key' in event) {
       const key = this.isSupportedKey(event);
       if (key) {
@@ -69,6 +69,13 @@ export class KeyboardComponent {
     element.style.color = color;
   }
 
+  /**
+   * Determines if the KeyboardEvent contains a supported key value.
+   * If so then it returns the key's frequency
+   * otherwise it returns a null string
+   *
+   * @param event : KeyboardEvent
+   */
   isSupportedKey(event: KeyboardEvent) {
     const key = event.key.toUpperCase();
     return (Object.keys(NoteFrequencies).includes(`${key}`)) ? key : '';

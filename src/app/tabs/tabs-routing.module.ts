@@ -16,8 +16,8 @@ const routes: Routes = [
         loadChildren: () => import('../oscillatorTab/oscillator.module').then(m => m.OscillatorsPageModule)
       },
       {
-        path: 'filters',
-        loadChildren: () => import('../filterTab/filter.module').then(m => m.FilterPageModule)
+        path: 'effects',
+        loadChildren: () => import('../effectsTab/effects.module').then(m => m.EffectsPageModule)
       },
       {
         path: '',

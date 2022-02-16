@@ -1,40 +1,45 @@
 <div class="input-container">
   <!-- enable oscillator-->
-  <div class="input-container-horizontal">
-    <label class="unselectable">
-    <input type="checkbox" [(ngModel)]="osc.on">
+  <section class="input-container-horizontal">
+    <label>
+      <input type="checkbox" [(ngModel)]="osc.on">
       Oscillator {{osc.id}}
     </label>
-  </div>
+  </section>
   <!-- select wave -->
-  <label><u>Wave</u></label>
-  <select [ngModel]="osc.wave" (ngModelChange)="osc.wave=$event.toLowerCase()">
-    <option *ngFor="let wave of waves" [value]="wave">
-      {{ wave | titlecase }}
-    </option>
-  </select>
+  <section>
+    <ion-label><u>Wave</u></ion-label>
+    <ion-select [ngModel]="osc.wave" (ngModelChange)="osc.wave=$event.toLowerCase()">
+      <ion-select-option *ngFor="let wave of waves" [value]="wave">
+        {{ wave | titlecase }}
+      </ion-select-option>
+    </ion-select>
+  </section>
   <!-- changes gain -->
-  <div class="input-container-horizontal">
-    <label><u>Gain</u><br>
+  <section>
+    <ion-label><u>Gain</u></ion-label>
     <ion-range
       [(ngModel)]="osc.gain"
       step=".1"
-      min="{0}"
-      max="{100}">
+      min="0"
+      max="100">
       <ion-label slot="start">0</ion-label>
       <ion-label slot="end">100</ion-label>
     </ion-range>
-    </label>
-  </div>
+  </section>
   <!-- change octave -->
-  <label class=""><u>Octave</u></label>
-  <div class="input-container-horizontal">
-    <button type="button" class="octave-button"
-            (click)="changeOctave(octaveEnums.octaveDecrease) ">&#8595;</button>
-    <label id="octave-label1" class="octaveDisplay">{{ displayOctave }}</label>
-    <button type="button" class="octave-button"
-            (click)="changeOctave(octaveEnums.octaveIncrease) ">&#8593;</button>
-  </div>
+  <section>
+    <label class=""><u>Octave</u></label>
+    <div class="input-container-horizontal">
+      <button type="button" class="octave-button"
+              (click)="changeOctave(octaveEnums.octaveDecrease) ">&#8595;
+      </button>
+      <label id="octave-label1" class="octaveDisplay">{{ displayOctave }}</label>
+      <button type="button" class="octave-button"
+              (click)="changeOctave(octaveEnums.octaveIncrease) ">&#8593;
+      </button>
+    </div>
+  </section>
   <!-- enable and change detune -->
   <label>
     <input type="checkbox" [(ngModel)]="osc.detuneEnabled">
@@ -44,8 +49,8 @@
     *ngIf="osc.detuneEnabled"
     [(ngModel)]="osc.detune"
     step=".5"
-    min="{-100}"
-    max="{100}"
+    min="-100"
+    max="100"
     aria-label="units">
     <ion-label slot="start">-100</ion-label>
     <ion-label slot="end">100</ion-label>

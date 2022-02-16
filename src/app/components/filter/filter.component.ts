@@ -10,13 +10,13 @@ import {Oscillator} from '../oscillator/oscillator';
   providers: [OscillatorService]
 })
 export class FilterComponent implements OnInit {
-  private _filterTypes: string[] = ['highpass', 'lowpass', 'bandpass', 'low-shelf', 'highshelf', 'peaking', 'notch'];
-  private _displaySliderFreq = 49.5;
-  private _filter: Filter;
-  private _appliedOsc = 0;
+  public filterTypes: string[] = ['highpass', 'lowpass', 'bandpass', 'low-shelf', 'highshelf', 'peaking', 'notch'];
+  public displaySliderFreq = 49.5;
+  public filter: Filter;
+  public appliedOsc = 0;
 
   constructor(public oscService: OscillatorService) {
-    this._filter = new Filter();
+    this.filter = new Filter();
   }
 
   // used for displayWith directive
@@ -40,43 +40,19 @@ export class FilterComponent implements OnInit {
 
   // called so ngModelChange updates filter attribute with the scaled value
   updateFrequency(event: any) {
-    this._displaySliderFreq = Number(event);
+    this.displaySliderFreq = Number(event);
     return this.formatFrequency(Number(event));
   }
 
   // called when clicking on a filter oscillator button
   changeFilter(osc: Oscillator) {
-    this._appliedOsc = osc.id-1;  // -1 for array indexing
-    this._filter = osc.filter;
-    this._displaySliderFreq = this.formatInverseFrequency(this._filter.frequency);
-  }
-
-  get filterTypes(): string[] {
-    return this._filterTypes;
-  }
-
-  set filterTypes(value: string[]) {
-    this._filterTypes = value;
-  }
-
-  get displaySliderFreq(): number {
-    return this._displaySliderFreq;
-  }
-
-  set displaySliderFreq(value: number) {
-    this._displaySliderFreq = value;
-  }
-
-  get filter(): Filter {
-    return this._filter;
-  }
-
-  set filter(value: Filter) {
-    this._filter = value;
+    this.appliedOsc = osc.id-1;  // -1 for array indexing
+    this.filter = osc.filter;
+    this.displaySliderFreq = this.formatInverseFrequency(this.filter.frequency);
   }
 
   ngOnInit(): void {
-    this._filter = this.oscService.oscillators[this._appliedOsc].filter;
-    this._displaySliderFreq = this.formatInverseFrequency(this._filter.frequency);
+    this.filter = this.oscService.oscillators[this.appliedOsc].filter;
+    this.displaySliderFreq = this.formatInverseFrequency(this.filter.frequency);
   }
 }
