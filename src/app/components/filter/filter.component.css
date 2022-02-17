@@ -2,14 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0em 1em 0 1em;
+  margin: 0 1em 0 1em;
   padding: 1em 1em 0;
-}
-
-.center-container {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
 }
 
 .osc-button-row {
@@ -22,10 +16,6 @@
 button {
   margin: 0 .5vw 0;
   padding: 1vh .5vw 1vh;
-}
-
-ion-label {
-  flex-grow: 2;
 }
 
 ion-label, label {

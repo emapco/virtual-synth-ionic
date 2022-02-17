@@ -1,0 +1,5 @@
+<ion-content [fullscreen]="true">
+  <br>
+  <app-add-oscillators (changedNrOscillators)="onOscillatorsChanged($event)"></app-add-oscillators>
+  <app-osc-comp *ngFor="let _ of [].constructor(nrOscillators)"></app-osc-comp>
+</ion-content>

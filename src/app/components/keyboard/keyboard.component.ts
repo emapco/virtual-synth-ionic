@@ -12,40 +12,21 @@ export class KeyboardComponent {
 
   constructor(private playNoteSer: PlayNoteService) {}
 
-  @HostListener('document:keydown', ['$event'])  // listener must be in a component
-  handleKeyboardEvent(event: KeyboardEvent) {
-    const key = this.isSupportedKey(event);
-    if (key) {
-      this.playNoteSer.playNotes(key);
-      this.animateKeyPress(key);
-    }
-  }
-
+  // listener must be in a component
   @HostListener('touchstart', ['$event'])
   handleTouchEvent(event: TouchEvent) {
     const element = event.target as HTMLElement;
     if (element.tagName === 'KBD') {
-      console.log(element.innerText);
-      this.playNoteSer.playNotes(element.innerText);
-      this.animateKeyPress(element.innerText);
+      this.playNoteSer.playNotes(element.id);
+      this.animateKeyPress(element.id);
     }
   }
 
-  @HostListener('document:keyup', ['$event'])
   @HostListener('touchend', ['$event'])
-  handleKeyTouchRelease(event: TouchEvent | KeyboardEvent) {
-    if ('key' in event) {
-      const key = this.isSupportedKey(event);
-      if (key) {
-        const element = document.getElementById(key);
-        // @ts-ignore
-        this.animateKeyRelease(element);
-      }
-    } else {
-      const element = event.target as HTMLElement;
-      if (element.tagName === 'KBD') {
-        this.animateKeyRelease(element);
-      }
+  handleTouchRelease(event: TouchEvent) {
+    const element = event.target as HTMLElement;
+    if (element.tagName === 'KBD') {
+      this.animateKeyRelease(element);
     }
   }
 

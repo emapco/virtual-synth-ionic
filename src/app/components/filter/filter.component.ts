@@ -10,7 +10,7 @@ import {Oscillator} from '../oscillator/oscillator';
   providers: [OscillatorService]
 })
 export class FilterComponent implements OnInit {
-  public filterTypes: string[] = ['highpass', 'lowpass', 'bandpass', 'low-shelf', 'highshelf', 'peaking', 'notch'];
+  public filterTypes: string[] = ['highpass', 'lowpass', 'bandpass', 'lowshelf', 'highshelf', 'peaking', 'notch'];
   public displaySliderFreq = 49.5;
   public filter: Filter;
   public appliedOsc = 0;
@@ -38,13 +38,21 @@ export class FilterComponent implements OnInit {
     return Math.round((Math.log(value)- newMin)/factor + oldMin);
   }
 
-  // called so ngModelChange updates filter attribute with the scaled value
+  /**
+   * called so ngModelChange updates filter attribute with the scaled value
+   *
+   * @param event
+   */
   updateFrequency(event: any) {
     this.displaySliderFreq = Number(event);
     return this.formatFrequency(Number(event));
   }
 
-  // called when clicking on a filter oscillator button
+  /**
+   * called when clicking on a filter oscillator button
+   *
+   * @param osc: Oscillator object that contains the filter object
+   */
   changeFilter(osc: Oscillator) {
     this.appliedOsc = osc.id-1;  // -1 for array indexing
     this.filter = osc.filter;
@@ -52,7 +60,9 @@ export class FilterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filter = this.oscService.oscillators[this.appliedOsc].filter;
+    if (this.oscService.oscillators.length) {
+      this.filter = this.oscService.oscillators[this.appliedOsc].filter;
+    }
     this.displaySliderFreq = this.formatInverseFrequency(this.filter.frequency);
   }
 }

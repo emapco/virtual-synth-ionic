@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { KeyboardPage } from './keyboard-page.component';
 
 import { KeyboardPageRoutingModule } from './keyboard-routing.module';
-import {KeyboardComponent} from '../components/keyboard/keyboard.component';
+import {KeyboardComponent} from '../../components/keyboard/keyboard.component';
 
 
 @NgModule({

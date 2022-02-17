@@ -1,11 +1,11 @@
 <div class="input-container">
   <div class="input-container-horizontal">
-    <button type="button" (click)="changeNrOsc(oscEnums.oscillatorIncrease)">
-      <ion-icon name="add"></ion-icon>
-    </button>
-    <label class="label">{{numberOsc}}</label>
     <button type="button" (click)="changeNrOsc(oscEnums.oscillatorDecrease)">
       <ion-icon name="remove"></ion-icon>
+    </button>
+    <label class="label">{{numberOsc}}</label>
+    <button type="button" (click)="changeNrOsc(oscEnums.oscillatorIncrease)">
+      <ion-icon name="add"></ion-icon>
     </button>
   </div>
 </div>

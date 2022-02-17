@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {OscillatorEnum} from '../enums/osc.enum';
-import {OscillatorService} from '../shared/oscillator.service';
+import {OscillatorEnum} from '../../enums/osc.enum';
+import {OscillatorService} from '../../shared/oscillator.service';
 
 @Component({
   selector: 'app-osc-tab',

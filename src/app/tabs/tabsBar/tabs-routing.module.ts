@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: 'tabsBar',
     component: TabsPage,
     children: [
       {
@@ -19,18 +19,17 @@ const routes: Routes = [
         path: 'effects',
         loadChildren: () => import('../effectsTab/effects.module').then(m => m.EffectsPageModule)
       },
-      {
-        path: '',
-        redirectTo: '/tabs/keyboard',
-        pathMatch: 'full'
-      },
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/keyboard',
+    redirectTo: '/tabsBar/keyboard',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: '**',
+    redirectTo: '/tabsBar/keyboard',
+  },
 ];
 
 @NgModule({

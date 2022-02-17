@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {EffectsPage} from './effects-page.component';
 
 import {EffectsPageRoutingModule} from './effects-routing.module';
-import {FilterComponent} from '../components/filter/filter.component';
+import {FilterComponent} from '../../components/filter/filter.component';
 
 @NgModule({
   imports: [

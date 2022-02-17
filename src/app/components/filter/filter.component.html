@@ -7,57 +7,60 @@
     </button>
   </div>
 </section>
-<section class="center-container input-container">
+<div class="input-container">
   <!-- enable filter -->
-  <div class="input-container-horizontal">
+  <section class="input-container-horizontal">
     <label class="unselectable">
       <input type="checkbox" [(ngModel)]="filter.enabled">
       Enable
     </label>
+  </section>
+  <div *ngIf="filter.enabled">
+    <!-- select filter type -->
+    <section>
+      <ion-label><u>Type</u></ion-label>
+      <ion-select [ngModel]="filter.type" (ngModelChange)="filter.type=$event.toLowerCase()">
+        <ion-select-option *ngFor="let filter of filterTypes" [value]="filter">
+          {{ filter | titlecase }}
+        </ion-select-option>
+      </ion-select>
+    </section>
+    <!-- change filter gain -->
+    <section>
+      <ion-label><u>Gain</u> (dB)</ion-label>
+      <ion-range
+        [(ngModel)]="filter.gain"
+        step="1"
+        min="-40"
+        max="40">
+        <ion-label slot="start">-40</ion-label>
+        <ion-label slot="end">40</ion-label>
+      </ion-range>
+    </section>
+    <!-- change cutoff frequency -->
+    <section>
+      <label><u>Frequency</u> (hz)</label>
+      <ion-range
+        [ngModel]="displaySliderFreq"
+        (ngModelChange)="filter.frequency=updateFrequency($event)"
+        step=".05"
+        min="1"
+        max="100">
+        <ion-label slot="start">10</ion-label>
+        <ion-label slot="end">20,000</ion-label>
+      </ion-range>
+    </section>
+    <!-- change q factor -->
+    <section>
+      <label class="form-label"><u>Q factor</u></label>
+      <ion-range
+        [(ngModel)]="filter.qFactor"
+        min="0"
+        max="1000">
+        <ion-label slot="start">0</ion-label>
+        <ion-label slot="end">1000</ion-label>
+      </ion-range>
+    </section>
   </div>
-  <!-- select filter type -->
-  <div>
-    <ion-label>Type</ion-label>
-    <ion-select [ngModel]="filter.type" (ngModelChange)="filter.type=$event.toLowerCase()">
-      <ion-select-option *ngFor="let filter of filterTypes" [value]="filter">
-        {{ filter | titlecase }}
-      </ion-select-option>
-    </ion-select>
-  </div>
-  <!-- change filter gain -->
-  <div class="">
-    <label>Gain</label>
-    <ion-range
-      [(ngModel)]="filter.gain"
-      step="1"
-      min="-40"
-      max="40">
-      <ion-label slot="start">-40</ion-label>
-      <ion-label slot="end">40</ion-label>
-    </ion-range>
-  </div>
-  <!-- change cutoff frequency -->
-  <div class="">
-    <label>Frequency</label>
-    <ion-range
-      [ngModel]="displaySliderFreq"
-      (ngModelChange)="filter.frequency=updateFrequency($event)"
-      step=".05"
-      min="1"
-      max="100">
-      <ion-label slot="start">10</ion-label>
-      <ion-label slot="end">20,000</ion-label>
-    </ion-range>
-  </div>
-  <!-- change q factor -->
-  <div class="">
-    <label class="form-label">Q</label>
-    <ion-range
-      [(ngModel)]="filter.qFactor"
-      min="0"
-      max="1000">
-      <ion-label slot="start">0</ion-label>
-      <ion-label slot="end">1000</ion-label>
-    </ion-range>
-  </div>
-</section>
+</div>
+
