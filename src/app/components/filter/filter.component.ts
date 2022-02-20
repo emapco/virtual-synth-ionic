@@ -6,7 +6,7 @@ import {Oscillator} from '../oscillator/oscillator';
 @Component({
   selector: 'app-filter-comp',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css'],
+  styleUrls: ['./filter.component.scss'],
   providers: [OscillatorService]
 })
 export class FilterComponent implements OnInit {

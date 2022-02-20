@@ -2,7 +2,9 @@
 <section class="center-container-header input-container">
   <p>Filter</p>
   <div class="osc-button-row">
-    <button *ngFor="let osc of oscService.oscillators" (click)="changeFilter(osc)">
+    <button [ngClass]="{selected : appliedOsc===osc.id-1}"
+            *ngFor="let osc of oscService.oscillators"
+            (click)="changeFilter(osc)">
       Osc {{osc.id}}
     </button>
   </div>
