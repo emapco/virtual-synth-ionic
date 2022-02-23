@@ -19,6 +19,11 @@ const routes: Routes = [
         path: 'effects',
         loadChildren: () => import('../effectsTab/effects.module').then(m => m.EffectsPageModule)
       },
+      {
+        path: '',
+        redirectTo: '/tabs/oscillators',
+        pathMatch: 'full'
+      },
     ]
   },
   {
