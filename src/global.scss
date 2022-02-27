@@ -25,6 +25,8 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import "theme/variables";
+
 button {
   border-radius: .6em;
   overflow: hidden;
@@ -35,8 +37,6 @@ button {
   flex-direction: column;
   padding: 1em;
   border-radius: 1.15em;
-  background: #212529;
-  color: #f8f9fa;
   margin: 0 1em .5em 1em;
 }
 

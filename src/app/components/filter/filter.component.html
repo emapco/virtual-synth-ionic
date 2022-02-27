@@ -1,5 +1,5 @@
 <!-- Filter component header div -->
-<section class="center-container-header input-container">
+<ion-card class="center-container-header input-container">
   <p>Filter</p>
   <div class="osc-button-row">
     <button [ngClass]="{selected : appliedOsc===osc.id-1}"
@@ -8,8 +8,8 @@
       Osc {{osc.id}}
     </button>
   </div>
-</section>
-<div class="input-container">
+</ion-card>
+<ion-card class="input-container">
   <!-- enable filter -->
   <section class="input-container-horizontal">
     <label class="unselectable">
@@ -64,5 +64,5 @@
       </ion-range>
     </section>
   </div>
-</div>
+</ion-card>
 
