@@ -17,7 +17,7 @@ export class AddOscillatorsComponent implements OnInit {
 
   changeNrOsc(mode: number): void {
     if (mode === this.oscEnums.oscillatorIncrease) {
-      if (this.numberOsc < 8) {
+      if (this.numberOsc < 4) {
         this.numberOsc++;
         this.changedNrOscillators.emit({changeMode: mode, nrOsc: this.numberOsc});
       }
